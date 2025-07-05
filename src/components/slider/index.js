@@ -1,14 +1,13 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import slides from './slides.json'
 
 const Carousel = () => {
-    const [currentIndex, setCurrentIndex] = useState(2)
+    const [[currentIndex, direction], setCurrentIndex] = useState([2, 0])
     const [dragging, setDragging] = useState(false)
     const [isHovering, setIsHovering] = useState(false)
-    const controls = useAnimation()
     const containerRef = useRef(null)
     const intervalRef = useRef(null)
 
@@ -39,51 +38,15 @@ const Carousel = () => {
     }, [currentIndex, dragging, isHovering])
 
     const nextSlide = () => {
-        setCurrentIndex(prev => {
-            const newIndex = prev === slides.length - 1 ? 0 : prev + 1
-            // Prepare for smooth transition
-            controls.start({
-                x: -100,
-                transition: { duration: 0 }
-            }).then(() => {
-                controls.start({
-                    x: 0,
-                    transition: { duration: 0.5, ease: 'easeInOut' }
-                })
-            })
-            return newIndex
-        })
+        setCurrentIndex([currentIndex === slides.length - 1 ? 0 : currentIndex + 1, 1])
     }
 
     const prevSlide = () => {
-        setCurrentIndex(prev => {
-            const newIndex = prev === 0 ? slides.length - 1 : prev - 1
-            // Prepare for smooth transition
-            controls.start({
-                x: 100,
-                transition: { duration: 0 }
-            }).then(() => {
-                controls.start({
-                    x: 0,
-                    transition: { duration: 0.5, ease: 'easeInOut' }
-                })
-            })
-            return newIndex
-        })
+        setCurrentIndex([currentIndex === 0 ? slides.length - 1 : currentIndex - 1, -1])
     }
 
     const goToSlide = (index) => {
-        const direction = index > currentIndex ? -100 : 100
-        controls.start({
-            x: direction,
-            transition: { duration: 0 }
-        }).then(() => {
-            setCurrentIndex(index)
-            controls.start({
-                x: 0,
-                transition: { duration: 0.5, ease: 'easeInOut' }
-            })
-        })
+        setCurrentIndex([index, index > currentIndex ? 1 : -1])
     }
 
     const handleDragStart = () => {
@@ -99,16 +62,30 @@ const Carousel = () => {
         }
     }
 
-    // Calculate visible slides (2 before, current, 2 after)
-    const getVisibleSlides = () => {
-        const visible = []
-        for (let i = -2; i <= 2; i++) {
-            let index = currentIndex + i
-            if (index < 0) index = slides.length + index
-            if (index >= slides.length) index = index - slides.length
-            visible.push(index)
-        }
-        return visible
+    // Animation variants
+    const variants = {
+        enter: (direction) => ({
+            x: direction > 0 ? '100%' : '-100%',
+            opacity: 0.8,
+            scale: 0.9
+        }),
+        center: {
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            transition: {
+                duration: 0.5,
+                ease: [0.32, 0.72, 0, 1]
+            }
+        },
+        exit: (direction) => ({
+            x: direction < 0 ? '100%' : '-100%',
+            opacity: 0.8,
+            scale: 0.9,
+            transition: {
+                duration: 0.5
+            }
+        })
     }
 
     return (
@@ -125,42 +102,49 @@ const Carousel = () => {
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
             >
-                {getVisibleSlides().map((slideIndex, i) => {
-                    const isCenter = i === 2
-                    const slide = slides[slideIndex]
+                <AnimatePresence custom={direction} initial={false}>
+                    {[-2, -1, 0, 1, 2].map((offset) => {
+                        const slideIndex = (currentIndex + offset + slides.length) % slides.length
+                        const slide = slides[slideIndex]
+                        const isCenter = offset === 0
 
-                    return (
-                        <motion.div
-                            key={slide.id}
-                            animate={controls}
-                            className={`relative transition-all duration-300 ease-in-out ${isCenter ? 'z-10 scale-110' : 'z-0 scale-90 opacity-80'
-                                }`}
-                            style={{
-                                width: isCenter ? '35%' : '25%',
-                                margin: '0 1%',
-                                minWidth: isCenter ? '400px' : '300px'
-                            }}
-                            onPointerDown={(e) => e.stopPropagation()}
-                        >
-                            <div className={`relative ${isCenter ? 'h-96' : 'h-80'
-                                } rounded-xl shadow-lg overflow-hidden mx-2`}>
-                                <Image
-                                    src={slide.imageUrl}
-                                    alt={slide.title}
-                                    fill
-                                    className="object-cover select-none"
-                                    draggable="false"
-                                    sizes={isCenter ? "(max-width: 768px) 100vw, 35vw" : "(max-width: 768px) 100vw, 25vw"}
-                                />
-                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 pt-8">
-                                    <h3 className="text-white text-xl font-bold drop-shadow-lg">
-                                        {slide.title}
-                                    </h3>
+                        return (
+                            <motion.div
+                                key={slideIndex}
+                                custom={direction}
+                                variants={variants}
+                                initial="enter"
+                                animate="center"
+                                exit="exit"
+                                className={`absolute ${isCenter ? 'z-10' : 'z-0'}`}
+                                style={{
+                                    width: isCenter ? '35%' : '25%',
+                                    margin: '0 1%',
+                                    minWidth: isCenter ? '400px' : '300px'
+                                }}
+                            >
+                                <div className={`relative ${isCenter ? 'h-96' : 'h-80'
+                                    } rounded-xl shadow-lg overflow-hidden mx-2`}>
+                                    <Image
+                                        src={slide.imageUrl}
+                                        alt={slide.title}
+                                        fill
+                                        className="object-cover select-none"
+                                        draggable="false"
+                                        placeholder="blur"
+                                        blurDataURL="data:image/png;base64,..."
+                                        sizes={isCenter ? "(max-width: 768px) 100vw, 35vw" : "(max-width: 768px) 100vw, 25vw"}
+                                    />
+                                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 pt-8">
+                                        <h3 className="text-white text-xl font-bold drop-shadow-lg">
+                                            {slide.title}
+                                        </h3>
+                                    </div>
                                 </div>
-                            </div>
-                        </motion.div>
-                    )
-                })}
+                            </motion.div>
+                        )
+                    })}
+                </AnimatePresence>
             </motion.div>
 
             {/* Pagination Dots */}
