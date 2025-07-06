@@ -1,14 +1,14 @@
 [{
         "id": 1,
         "order": 7,
-        "imageUrl": "/images/Contemporary Kerala-Style Bungalow.jpg",
+        "imageUrl": "/images/Contemporary Kerala-Style Bungalow.webp",
         "title": "Contemporary Kerala-Style Bungalow",
         "description": ""
     },
     {
         "id": 2,
         "order": 10,
-        "imageUrl": "/images/Contemporary Tropical Villa.jpg",
+        "imageUrl": "/images/Contemporary Tropical Villa.webp",
         "title": "Contemporary Tropical Villa",
         "description": ""
     },
@@ -22,7 +22,7 @@
     {
         "id": 4,
         "order": 4,
-        "imageUrl": "/images/Facelifting.jpg",
+        "imageUrl": "/images/Facelifting.webp",
         "title": "Facelifting",
         "description": ""
     },
@@ -36,7 +36,7 @@
     {
         "id": 6,
         "order": 6,
-        "imageUrl": "/images/Modern Mint Elegance.jpg",
+        "imageUrl": "/images/Modern Mint Elegance.webp",
         "title": "Modern Mint Elegance",
         "description": ""
     },
@@ -50,28 +50,28 @@
     {
         "id": 8,
         "order": 8,
-        "imageUrl": "/images/Patterned Luxury Kitchen.jpg",
+        "imageUrl": "/images/Patterned Luxury Kitchen.webp",
         "title": "Patterned Luxury Kitchen",
         "description": ""
     },
     {
         "id": 9,
         "order": 9,
-        "imageUrl": "/images/Rexmo Welcome Zone.jpg",
+        "imageUrl": "/images/Rexmo Welcome Zone.webp",
         "title": "Rexmo Welcome Zone",
         "description": ""
     },
     {
         "id": 10,
         "order": 3,
-        "imageUrl": "/images/Stone Villa Nestled in the Hills.jpg",
+        "imageUrl": "/images/Stone Villa Nestled in the Hills.webp",
         "title": "Stone Villa Nestled in the Hills",
         "description": ""
     },
     {
         "id": 12,
         "order": 12,
-        "imageUrl": "/images/Sleek Olive Kitchen.jpg",
+        "imageUrl": "/images/Sleek Olive Kitchen.webp",
         "title": "Sleek Olive Kitchen",
         "description": ""
     },

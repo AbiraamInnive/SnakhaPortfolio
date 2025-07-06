@@ -44,7 +44,7 @@ const Carousel = () => {
     const sortedSlides = [...slides].sort((a, b) => a.order - b.order)
 
     return (
-        <div className="sliderContainer relative w-full px-4 sm:px-6 md:px-10 py-12">
+        <div className="sliderContainer relative w-full px-4 sm:px-6 md:px-10 py-8 sm:py-8 md:py-12">
             <div className="overflow-hidden" ref={emblaRef}>
                 <div className="flex">
                     {sortedSlides.map((slide, index) => (

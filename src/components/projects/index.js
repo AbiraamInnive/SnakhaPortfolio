@@ -5,7 +5,7 @@ import slides from '@json/slides.json'
 
 const Projects = () => {
     return (
-        <div id="projects" className="projectContainer px-4 sm:px-6 md:px-10 py-12">
+        <div id="projects" className="projectContainer px-4 sm:px-6 md:px-10 py-6 md:py-12 sm:py-8">
             {/* Heading */}
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
                 PROJECTS
