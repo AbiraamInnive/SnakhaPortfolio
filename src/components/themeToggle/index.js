@@ -36,7 +36,7 @@ export default function ThemeToggle() {
 
     if (!mounted) {
         return (
-            <div className="w-14 h-8 rounded-full bg-gray-200 dark:bg-gray-700 p-1">
+            <div className="w-14 h-8 rounded-full bg-gray-200 p-1">
                 <div className="w-6 h-6 rounded-full bg-white shadow-md"></div>
             </div>
         )

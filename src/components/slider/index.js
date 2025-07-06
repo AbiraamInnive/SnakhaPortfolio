@@ -1,4 +1,5 @@
 'use client'
+
 import { useCallback, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
@@ -7,7 +8,7 @@ import slides from '@json/slides.json'
 
 const Carousel = () => {
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' }, [
-        Autoplay({ delay: 3000, stopOnInteraction: false })
+        Autoplay({ delay: 3000, stopOnInteraction: false }),
     ])
     const [selectedIndex, setSelectedIndex] = useState(0)
 
@@ -40,16 +41,18 @@ const Carousel = () => {
         }
     }, [emblaApi, onSelect])
 
-    // Sort slides by order once
     const sortedSlides = [...slides].sort((a, b) => a.order - b.order)
 
     return (
-        <div className="sliderContainer relative w-full px-30 py-12">
+        <div className="sliderContainer relative w-full px-4 sm:px-6 md:px-10 py-12">
             <div className="overflow-hidden" ref={emblaRef}>
                 <div className="flex">
                     {sortedSlides.map((slide, index) => (
-                        <div key={index} className="flex-[0_0_40%] min-w-0 pl-4">
-                            <div className="relative h-96 rounded-xl shadow-lg overflow-hidden">
+                        <div
+                            key={index}
+                            className="flex-[0_0_100%] sm:flex-[0_0_60%] md:flex-[0_0_40%] min-w-0 px-2 sm:px-4"
+                        >
+                            <div className="relative w-full h-64 sm:h-80 md:h-96 rounded-xl shadow-lg overflow-hidden">
                                 <Image
                                     loading="lazy"
                                     src={slide.imageUrl}
@@ -58,22 +61,24 @@ const Carousel = () => {
                                     className="object-cover"
                                     placeholder="blur"
                                     blurDataURL="data:image/png;base64,..."
-                                    sizes="(max-width: 768px) 100vw, 80vw"
+                                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 60vw, 40vw"
                                 />
-                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 pt-8">
-                                    <h3 className="text-xl font-bold drop-shadow-lg">
-                                        {slide.title}
-                                    </h3>
-                                </div>
+                                {index === selectedIndex && (
+                                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 pt-8">
+                                        <h3 className="text-xl font-bold text-white drop-shadow-lg">
+                                            {slide.title}
+                                        </h3>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
 
-            {/* Pagination */}
+            {/* Pagination Dots */}
             <div className="flex justify-center mt-8 space-x-3">
-                {sortedSlides.map((slide, index) => (
+                {sortedSlides.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => scrollTo(index)}
@@ -84,27 +89,29 @@ const Carousel = () => {
                 ))}
             </div>
 
-            {/* Navigation Arrows */}
+            {/* Navigation Arrows (Responsive Position) */}
             <button
                 onClick={scrollPrev}
-                className="absolute left-24 top-1/2 -translate-y-1/2 bg-white text-black hover:bg-white p-2 rounded-full shadow-lg z-20 transition-all cursor-pointer flex items-center justify-center"
+                className="hidden md:flex absolute left-4 sm:left-0 md:left-12 top-1/2 -translate-y-1/2 bg-white text-black hover:bg-white p-2 rounded-full shadow-lg z-20 transition-all cursor-pointer items-center justify-center"
                 style={{
-                    width: '50px',
-                    height: '50px',
+                    width: '40px',
+                    height: '40px',
                 }}
             >
-                <span className="text-2xl font-bold">&larr;</span>
+                <span className="text-lg md:text-2xl font-bold">&larr;</span>
             </button>
+
             <button
                 onClick={scrollNext}
-                className="absolute right-24 top-1/2 -translate-y-1/2 bg-white text-black hover:bg-white p-2 rounded-full shadow-lg z-20 transition-all cursor-pointer flex items-center justify-center"
+                className="hidden md:flex absolute right-4 sm:right-10 md:right-12 top-1/2 -translate-y-1/2 bg-white text-black hover:bg-white p-2 rounded-full shadow-lg z-20 transition-all cursor-pointer items-center justify-center"
                 style={{
-                    width: '50px',
-                    height: '50px',
+                    width: '40px',
+                    height: '40px',
                 }}
             >
-                <span className="text-2xl font-bold">&rarr;</span>
+                <span className="text-lg md:text-2xl font-bold">&rarr;</span>
             </button>
+
         </div>
     )
 }
