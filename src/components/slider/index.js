@@ -87,7 +87,7 @@ const Carousel = () => {
             {/* Navigation Arrows */}
             <button
                 onClick={scrollPrev}
-                className="absolute left-24 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg z-20 transition-all cursor-pointer flex items-center justify-center"
+                className="absolute left-24 top-1/2 -translate-y-1/2 bg-white text-black hover:bg-white p-2 rounded-full shadow-lg z-20 transition-all cursor-pointer flex items-center justify-center"
                 style={{
                     width: '50px',
                     height: '50px',
@@ -97,7 +97,7 @@ const Carousel = () => {
             </button>
             <button
                 onClick={scrollNext}
-                className="absolute right-24 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg z-20 transition-all cursor-pointer flex items-center justify-center"
+                className="absolute right-24 top-1/2 -translate-y-1/2 bg-white text-black hover:bg-white p-2 rounded-full shadow-lg z-20 transition-all cursor-pointer flex items-center justify-center"
                 style={{
                     width: '50px',
                     height: '50px',
