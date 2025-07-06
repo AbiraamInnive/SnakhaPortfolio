@@ -10,7 +10,7 @@ export default function Footer() {
                 <div className="flex flex-col sm:flex-row gap-6 w-full md:w-[70%]">
                     {/* Profile image */}
                     <div className="flex md:flex-col sm:flex-row md:items-center space-y-3">
-                        <div className="relative  w-32 h-32 sm:w-26 sm:h-26 rounded-full overflow-hidden shadow-md">
+                        <div className="relative  w-32 h-32 sm:w-26 sm:h-26 rounded-lg overflow-hidden shadow-md">
                             <Image
                                 src="/elements/profile.jpg"
                                 alt="Snakha Ranjan"
@@ -43,7 +43,7 @@ export default function Footer() {
                         </span>
                         <a
                             href="mailto:snakharanjan@gmail.com"
-                            className="text-sm break-all"
+                            className="text-sm text-nowrap"
                         >
                             snakharanjan@gmail.com
                         </a>
