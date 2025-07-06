@@ -51,6 +51,7 @@ const Carousel = () => {
                         <div key={index} className="flex-[0_0_40%] min-w-0 pl-4">
                             <div className="relative h-96 rounded-xl shadow-lg overflow-hidden">
                                 <Image
+                                    loading="lazy"
                                     src={slide.imageUrl}
                                     alt={slide.title}
                                     fill
