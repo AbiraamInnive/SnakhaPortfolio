@@ -31,7 +31,42 @@ html {
 
 }
 
-.dark .header {
-  background: black;
-  color: white;
+.dark .headerContainer {
+  background: #272727;
+  color: #b6b078;
+}
+
+.dark .sliderContainer {
+  background-color: #3b3a3a;
+  color: #b6b078;
+}
+
+.dark .projectContainer {
+  background-color: #3b3a3a;
+  color: #b6b078;
+}
+
+.dark .aboutMeContainer {
+  background: #272727;
+  color: #b6b078;
+}
+
+.headerContainer {
+  background: #ccd3cc;
+  color: #3b3b3b;
+}
+
+.sliderContainer {
+  background: #f5f5f5;
+  color: #3b3b3b;
+}
+
+.projectContainer {
+  background: #fcfffc;
+  color: #3b3b3b;
+}
+
+.aboutMeContainer {
+  background: #ccd3cc;
+  color: #3b3b3b;
 }

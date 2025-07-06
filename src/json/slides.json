@@ -1,0 +1,85 @@
+[{
+        "id": 1,
+        "order": 7,
+        "imageUrl": "/images/Contemporary Kerala-Style Bungalow.jpg",
+        "title": "Contemporary Kerala-Style Bungalow",
+        "description": ""
+    },
+    {
+        "id": 2,
+        "order": 10,
+        "imageUrl": "/images/Contemporary Tropical Villa.jpg",
+        "title": "Contemporary Tropical Villa",
+        "description": ""
+    },
+    {
+        "id": 3,
+        "order": 2,
+        "imageUrl": "/images/Cosy Emerald.png",
+        "title": "Cosy Emerald",
+        "description": ""
+    },
+    {
+        "id": 4,
+        "order": 4,
+        "imageUrl": "/images/Facelifting.jpg",
+        "title": "Facelifting",
+        "description": ""
+    },
+    {
+        "id": 5,
+        "order": 5,
+        "imageUrl": "/images/Integrated Wash Zone.png",
+        "title": "Integrated Wash Zone",
+        "description": ""
+    },
+    {
+        "id": 6,
+        "order": 6,
+        "imageUrl": "/images/Modern Mint Elegance.jpg",
+        "title": "Modern Mint Elegance",
+        "description": ""
+    },
+    {
+        "id": 7,
+        "order": 1,
+        "imageUrl": "/images/Neutral Palette.png",
+        "title": "Neutral Palette",
+        "description": ""
+    },
+    {
+        "id": 8,
+        "order": 8,
+        "imageUrl": "/images/Patterned Luxury Kitchen.jpg",
+        "title": "Patterned Luxury Kitchen",
+        "description": ""
+    },
+    {
+        "id": 9,
+        "order": 9,
+        "imageUrl": "/images/Rexmo Welcome Zone.jpg",
+        "title": "Rexmo Welcome Zone",
+        "description": ""
+    },
+    {
+        "id": 10,
+        "order": 3,
+        "imageUrl": "/images/Stone Villa Nestled in the Hills.jpg",
+        "title": "Stone Villa Nestled in the Hills",
+        "description": ""
+    },
+    {
+        "id": 12,
+        "order": 12,
+        "imageUrl": "/images/Sleek Olive Kitchen.jpg",
+        "title": "Sleek Olive Kitchen",
+        "description": ""
+    },
+    {
+        "id": 13,
+        "order": 13,
+        "imageUrl": "/images/The Blue Ink.png",
+        "title": "The Blue Ink",
+        "description": ""
+    }
+]
