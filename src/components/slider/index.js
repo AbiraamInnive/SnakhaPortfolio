@@ -64,8 +64,8 @@ const Carousel = () => {
                                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 60vw, 40vw"
                                 />
                                 {index === selectedIndex && (
-                                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 pt-8">
-                                        <h3 className="text-xl font-bold text-white drop-shadow-lg">
+                                    <div className="absolute bottom-0 left-0 right-0  to-transparent p-4 pt-8">
+                                        <h3 className="text-xl font-bold drop-shadow-lg">
                                             {slide.title}
                                         </h3>
                                     </div>
@@ -82,7 +82,7 @@ const Carousel = () => {
                     <button
                         key={index}
                         onClick={() => scrollTo(index)}
-                        className={`w-3 h-3 rounded-full transition-all cursor-pointer ${index === selectedIndex ? 'bg-[#618861] w-6' : 'bg-gray-300'
+                        className={`w-3 h-3 rounded-full transition-all cursor-pointer ${index === selectedIndex ? 'activeDots w-6' : 'bg-gray-300'
                             }`}
                         aria-label={`Go to slide ${index + 1}`}
                     />

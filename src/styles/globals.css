@@ -51,6 +51,10 @@ html {
   color: #b6b078;
 }
 
+.dark .activeDots {
+  background-color: #bea973;
+}
+
 .headerContainer {
   background: #ccd3cc;
   color: #3b3b3b;
@@ -69,4 +73,8 @@ html {
 .aboutMeContainer {
   background: #ccd3cc;
   color: #3b3b3b;
+}
+
+.activeDots {
+  background-color: #5e8a5f;
 }
