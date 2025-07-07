@@ -76,7 +76,7 @@ export default function Footer() {
                     <div className="flex items-center space-x-3 hover:text-green-600 transition">
                         <FaWhatsapp size={20} />
                         <a
-                            href="https://wa.me/your-number"
+                            href="https://wa.me/919486920554"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-sm"
